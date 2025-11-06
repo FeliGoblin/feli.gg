@@ -30,7 +30,12 @@ exclude:
   - "*.gemspec"
   - README.md
   - LICENSE
-  - "package*.json"
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - package.json
+  - package-lock.json
 
 #plugins:
 #    - jekyll-minifier
