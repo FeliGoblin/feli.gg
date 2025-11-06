@@ -32,11 +32,11 @@ exclude:
   - LICENSE
   - "package*.json"
 
-plugins:
-    - jekyll-minifier
+#plugins:
+#    - jekyll-minifier
 
-jekyll-minifier:
-  remove_comments: true             # Default: true
-  compress_css: true                # Default: true
-  compress_javascript: true         # Default: true
-  compress_json: true               # Default: true
+#jekyll-minifier:
+#  remove_comments: true             # Default: true
+#  compress_css: true                # Default: true
+#  compress_javascript: true         # Default: true
+#  compress_json: true               # Default: true
