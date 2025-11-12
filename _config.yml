@@ -4,9 +4,9 @@ baseurl: ""      # place folder name if the site is served in a subfolder
 
 # Site settings
 title: Feli.gg
-description: Programmer and occasional streamer
-# baseurl: "" # the subpath of your site, e.g. /blog
-# url: "localhost:3000" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
+prefix: FELI
+typing_text_1: "&nbsp;GOBLIN"
+typing_text_2: .GG
 
 # User settings
 username: FeliGoblin
@@ -14,15 +14,9 @@ user_description: Programmer and occasional streamer
 user_title: Programmer
 email: mail.feli.gg
 twitter_username: FeliGoblin
-#instagram_username:
-#facebook_username:
-#linkedin_username:
 github_username: FeliGoblin
 youtube_at: FeliGoblin
 discord_invite: nFYHZPu
-# medium_username:
-# medium_url:
-# gplus_username:
 kofi_username: FeliGoblin
 
 exclude:
@@ -36,12 +30,3 @@ exclude:
   - node_modules
   - package.json
   - package-lock.json
-
-#plugins:
-#    - jekyll-minifier
-
-#jekyll-minifier:
-#  remove_comments: true             # Default: true
-#  compress_css: true                # Default: true
-#  compress_javascript: true         # Default: true
-#  compress_json: true               # Default: true

@@ -3,9 +3,9 @@
       <h1>
         <div id="title-wrap">
           <span id="greaterthan" class="rgb-text">&gt;</span>
-          <span id="feli" class="rgb-text">FELI</span>
-          <span id="goblin">&nbsp;GOBLIN</span>
-          <span id="gg">.GG</span>
+          <span id="prefix" class="rgb-text">{{ site.prefix }}</span>
+          <span id="typing_text_1">{{ site.typing_text_1 }}</span>
+          <span id="typing_text_2">{{ site.typing_text_2 }}</span>
           <span id="cursor" class="rgb-text">▋</span>
         </div>
         <span class="site-description">{{ site.user_description }}</span>
@@ -14,22 +14,8 @@
         {% if site.email %}
         <a aria-label="Send email" href="mailto:{{ site.email }}"><i class="icon fa fa-envelope"></i></a>
         {% endif %}
-        {% if site.instagram_username %}
-        <a aria-label="My Instagram" target="_blank" href="https://www.instagram.com/{{ site.instagram_username }}"><i class="icon fa fa-brands fa-instagram" aria-hidden="true"></i></a>
-        {% endif %}
-        {% if site.facebook_username %}
-        <a aria-label="My Facebook" target="_blank" href="https://www.facebook.com/{{ site.facebook_username }}"><i class="icon fa fa-brands fa-facebook" aria-hidden="true"></i></a>
-        {% endif %}
-        {% if site.linkedin_username %}
-        <a aria-label="My LinkedIn" target="_blank" href="https://www.linkedin.com/in/{{ site.linkedin_username }}"><i class="icon fa fa-brands fa-linkedin-square" aria-hidden="true"></i></a>
-        {% endif %}
         {% if site.github_username %}
         <a aria-label="My Github" target="_blank" href="https://github.com/{{ site.github_username }}"><i class="icon fa fa-brands fa-github-alt" aria-hidden="true"></i></a>
-        {% endif %}
-        {% if site.medium_username %}
-        <a aria-label="My Medium" target="_blank" href="https://medium.com/{{ site.medium_username }}"><i class="icon fa fa-brands fa-medium" aria-hidden="true"></i></a>
-        {% elsif site.medium_url %}
-        <a aria-label="My Medium" target="_blank" href="https://{{ site.medium_url }}"><i class="icon fa fa-brands fa-medium" aria-hidden="true"></i></a>
         {% endif %}
         {% if site.youtube_at %}
         <a aria-label="My YouTube" target="_blank" href="https://youtube.com/@{{ site.youtube_at }}"><i class="icon fa fa-brands fa-youtube" aria-hidden="true"></i></a>
@@ -44,9 +30,5 @@
         <a aria-label="My Ko-Fi" target="_blank" href="https://ko-fi.com/{{ site.kofi_username }}"><i class="icon fa fa-ko-fi" aria-hidden="true"></i></a>
         {% endif %}
       </div>
-      <!--<div class="header-links">
-        <a class="link" href="#about" data-scroll>About Me</a>
-      </div>-->
   </div>
-  <!--<a class="down" href="#about" data-scroll><i class="icon fa fa-chevron-down" aria-hidden="true"></i></a>-->
 </div>

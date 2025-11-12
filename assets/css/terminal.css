@@ -58,11 +58,11 @@
     margin-right: 5px;
 }
 
-#feli {
+#prefix {
     margin-right: 0px;
 }
 
-#goblin, #gg {
+#typing_text_1, #typing_text_2 {
 	width: 0;
 	max-width: fit-content;
 	max-height: var(--text-height-minus-1);
@@ -73,7 +73,7 @@
 		rgb-text 3s steps(9) infinite alternate;
 }
 
-#gg {
+#typing_text_2 {
 	animation-delay: var(--type-erase-time);
 }
 
