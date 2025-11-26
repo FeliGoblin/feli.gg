@@ -111,6 +111,34 @@
         }
 
     </style>
+    <div id="warning" style="display:none;">
+      <p>Load this page into an OBS-Studio Browser Source</p>
+      <p>
+        Width: 2560<br/>
+        Height 1440<br/>
+        Page permissions: Read access to user Information
+      </p>
+      <p>
+        Create Scene Transitions (any settings):<br />
+        Starting_Soon<br/>
+        Be_Right_Back<br/>
+        Stream_Ending<br/>
+        Show_BG<br/>
+        Hide_BG<br/>
+        Show_Particles<br/>
+        Hide_Particles<br/>
+        Show_Cam<br/>
+        Hide_Cam<br/>
+        Show_Text<br/>
+        Hide_Text<br/>
+        Show_Text_Opacity<br/>
+        Hide_Text_Opacity
+      </p>
+      <p>
+        Toggle a Scene Transition to animate..<br/>
+        Can use Stream Deck with the OBS Studio plugin.
+      </p>
+    </div>
 
     <div id="overlay_text_wrapper">
         <div id="title-wrap">
@@ -127,8 +155,13 @@
         function initObsIntegration() {
             if (!window.obsstudio) {
                 console.warn('obsstudio API not available (probably not running inside OBS)');
+
+                document.getElementById("overlay_text_wrapper").style.display = "none";
+                document.getElementById("overlay_cam").style.display = "none";
+                document.getElementById("warning").style.display = "block";
                 return;
             }
+            
             console.log(window.obsstudio.pluginVersion);
 
             const overlay_text_wrapper = document.getElementById('overlay_text_wrapper');
