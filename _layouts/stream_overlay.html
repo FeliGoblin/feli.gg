@@ -68,14 +68,16 @@
         }
 
         #overlay_cam {
-            background: white;
+            background: white url(/assets/image/static.webp);
+            background-size: cover;
+            background-repeat: no-repeat;
             width: 1920px;
             height: 1080px;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
             bottom: -1110px;
-          overflow: hidden;
+            overflow: hidden;
             border: white solid 10px;
             animation: rgb_box 2s steps(9) infinite alternate;
             transition: bottom 1.5s ease;
@@ -223,5 +225,10 @@
     </script>
 
     {% include footer.html %}
+    <script>
+    document.addEventListener("DOMContentLoaded", (e) => {
+        setParticles(0.5)
+    },!1);
+    </script>
   </body>
 </html>
