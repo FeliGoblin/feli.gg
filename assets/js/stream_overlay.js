@@ -1,23 +1,15 @@
+---
+---
+
 function initObsIntegration() {    
 
     const warning = document.getElementById('warning');
-    const streamOverlay = document.getElementById('stream_overlay');
     const overlayTextWrapper = document.getElementById('overlay_text_wrapper');
     const overlayText = document.getElementById('overlay_text');
     const overlayCam = document.getElementById('overlay_cam');
     const particles = document.getElementById('particles-js');
 
     const TRANSITION_ACTIONS = {
-      Starting_Soon: () => {
-        overlayText.textContent = 'STARTING SOON';
-      },
-      Be_Right_Back: () => {
-        overlayText.textContent = 'BE RIGHT BACK';
-      },
-      Stream_Ending: () => {
-        overlayText.textContent = 'STREAM ENDING';
-      },
-
       Show_BG: () => {
         particles.classList.add('show_background');
       },
@@ -56,26 +48,22 @@ function initObsIntegration() {
       },
     };
 
-    function triggerBlurIn(el) {
-        el.classList.remove("blur_in", "blur_out");
-        void el.offsetWidth; // force reflow
-        el.classList.add("blur_in");
+    const STATUSES = {{ site.statuses | jsonify }};
+    for (const status of STATUSES) {
+      if (status.name) {
+        TRANSITION_ACTIONS[status.name] = () => {
+          overlayText.textContent = status.text;
+        };
+      }
     }
 
-    function triggerBlurOut(el) {
-        el.classList.remove("blur_in", "blur_out");
-        void el.offsetWidth; // force reflow
-        el.classList.add("blur_out");
-    }
-
-    // Not in OBS: show instructions and bail
+    // Not in OBS: show instructions and testing buttons
     if (!window.obsstudio) {
         console.warn('obsstudio API not available (probably not running inside OBS)');
-        //overlayTextWrapper.style.display = 'none';
-        //overlayCam.style.display = 'none';
         warning.style.display = 'block';
         document.body.style.backgroundColor = "#000";
 
+        const p_TRANSITION_ACTIONS = document.getElementById("TRANSITION_ACTIONS")
         const devPanel = document.createElement('div');
         devPanel.style.position = 'fixed';
         devPanel.style.top = '10px';
@@ -85,21 +73,10 @@ function initObsIntegration() {
         devPanel.style.color = '#fff';
         devPanel.style.padding = '8px';
         devPanel.style.fontSize = '12px';
-        devPanel.innerHTML = `
-            <button data-t="Starting_Soon">Starting_Soon</button>
-            <button data-t="Be_Right_Back">Be_Right_Back</button>
-            <button data-t="Stream_Ending">Stream_Ending</button>
-            <button data-t="Show_BG">Show_BG</button>
-            <button data-t="Hide_BG">Hide_BG</button>
-            <button data-t="Show_Particles">Show_Particles</button>
-            <button data-t="Hide_Particles">Hide_Particles</button>
-            <button data-t="Show_Cam">Show_Cam</button>
-            <button data-t="Hide_Cam">Hide_Cam</button>
-            <button data-t="Show_Text">Show_Text</button>
-            <button data-t="Hide_Text">Hide_Text</button>
-            <button data-t="Show_Text_Opacity">Show_Text_Opacity</button>
-            <button data-t="Hide_Text_Opacity">Hide_Text_Opacity</button>
-        `;
+        for (const key of Object.keys(TRANSITION_ACTIONS)) {
+          devPanel.innerHTML += "<button data-t='" + key + "'>" + key + "</button>"
+          p_TRANSITION_ACTIONS.innerHTML += "<br/>" + key
+        }
         document.body.appendChild(devPanel);
 
         devPanel.addEventListener('click', (e) => {
@@ -111,6 +88,7 @@ function initObsIntegration() {
 
         TRANSITION_ACTIONS["Show_Particles"]()
         TRANSITION_ACTIONS["Show_Text_Opacity"]()
+        TRANSITION_ACTIONS["Show_Text"]()
 
       return;
     }

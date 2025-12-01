@@ -9,11 +9,20 @@ prefix: FELI
 typing_text_1: "&nbsp;GOBLIN"
 typing_text_2: .GG
 
+# Stream Overlay settings
+statuses:
+  - name: "Starting_Soon"
+    text: "STARTING SOON"
+  - name: "Be_Right_Back"
+    text: "BE RIGHT BACK"
+  - name: "Stream_Ending"
+    text: "STREAM ENDING"
+
 # User settings
 username: FeliGoblin
-user_description: Programmer and occasional streamer
+user_description: Hobby programmer and streamer :)
 user_title: Programmer
-email: mail.feli.gg
+email: mail@feli.gg
 twitter_username: FeliGoblin
 github_username: FeliGoblin
 youtube_at: FeliGoblin
