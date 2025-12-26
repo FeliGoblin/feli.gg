@@ -1,6 +1,18 @@
 ---
 ---
 
+function formatName(input) {
+  if (typeof input !== "string") return "";
+
+  if (!input.startsWith("BR_")) return "";
+
+  return input
+    .slice(3)
+    .toLowerCase()
+    .replace(/(^|_)([a-z])/g, (match, prefix, char) => prefix + char.toUpperCase());
+}
+
+
 function initObsIntegration() {    
 
     const warning = document.getElementById('warning');
@@ -10,10 +22,10 @@ function initObsIntegration() {
     const particles = document.getElementById('particles-js');
 
     const TRANSITION_ACTIONS = {
-      Show_BG: () => {
+      Show_Background: () => {
         particles.classList.add('show_background');
       },
-      Hide_BG: () => {
+      Hide_Background: () => {
         particles.classList.remove('show_background');
       },
 
@@ -24,26 +36,26 @@ function initObsIntegration() {
         particles.style.opacity = "0";
       },
 
-      Show_Cam: () => {
+      Show_Camera: () => {
         overlayTextWrapper.classList.add('text_position_top');
         overlayCam.classList.add('show_cam');
       },
-      Hide_Cam: () => {
+      Hide_Camera: () => {
         overlayTextWrapper.classList.remove('text_position_top');
         overlayCam.classList.remove('show_cam');
       },
 
-      Show_Text: () => {
+      Type_Text: () => {
         overlayText.style.width = "100%";
       },
-      Hide_Text: () => {
+      Untype_Text: () => {
         overlayText.style.width = "0";
       },
 
-      Show_Text_Opacity: () => {
+      Show_Text: () => {
         overlayTextWrapper.style.opacity = "1";
       },
-      Hide_Text_Opacity: () => {
+      Hide_Text: () => {
         overlayTextWrapper.style.opacity = "0";
       },
     };
@@ -75,7 +87,7 @@ function initObsIntegration() {
         devPanel.style.fontSize = '12px';
         for (const key of Object.keys(TRANSITION_ACTIONS)) {
           devPanel.innerHTML += "<button data-t='" + key + "'>" + key + "</button>"
-          p_TRANSITION_ACTIONS.innerHTML += "<br/>" + key
+          p_TRANSITION_ACTIONS.innerHTML += "<br/>" + "BR_" + key
         }
         document.body.appendChild(devPanel);
 
@@ -87,8 +99,8 @@ function initObsIntegration() {
         });
 
         TRANSITION_ACTIONS["Show_Particles"]()
-        TRANSITION_ACTIONS["Show_Text_Opacity"]()
         TRANSITION_ACTIONS["Show_Text"]()
+        TRANSITION_ACTIONS["Type_Text"]()
 
       return;
     }
@@ -101,7 +113,9 @@ function initObsIntegration() {
         const transition_name = event.detail.name
         console.log('Transition:', transition_name);
 
-        const action = TRANSITION_ACTIONS[transition_name];
+        if (!transition_name.startsWith("BR_")) return;
+
+        const action = TRANSITION_ACTIONS[transition_name.slice(3)];
         if (!action) {
             console.warn('Unknown transition:', transition_name);
             return;

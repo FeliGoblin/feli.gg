@@ -11,11 +11,11 @@ typing_text_2: .GG
 
 # Stream Overlay settings
 statuses:
-  - name: "Starting_Soon"
+  - name: "Text_Starting_Soon"
     text: "STARTING SOON"
-  - name: "Be_Right_Back"
+  - name: "Text_Be_Right_Back"
     text: "BE RIGHT BACK"
-  - name: "Stream_Ending"
+  - name: "Text_Stream_Ending"
     text: "STREAM ENDING"
 
 # User settings
